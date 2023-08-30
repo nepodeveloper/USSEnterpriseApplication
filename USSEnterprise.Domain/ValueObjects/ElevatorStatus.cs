@@ -9,7 +9,11 @@ namespace USSEnterprise.Domain.ValueObjects
     public enum ElevatorStatus
     {
         UP,
+        DOWN,
         STOPPED,
-        DOWN
+        MOVING,
+        JAMMED,
+        OVERWEIGHT,
+        SERVICE
     }
 }
