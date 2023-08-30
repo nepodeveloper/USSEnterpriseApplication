@@ -14,6 +14,7 @@ namespace USSEnterprise.Domain.ValueObjects
         MOVING,
         JAMMED,
         OVERWEIGHT,
-        SERVICE
+        SERVICE,
+        IDLE
     }
 }

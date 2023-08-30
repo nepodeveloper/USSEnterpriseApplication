@@ -48,5 +48,14 @@
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\USSEnterprise.Presentation\packages\SonarAnalyzer.CSharp.9.8.0.76515\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\USSEnterprise.Presentation\packages\SonarAnalyzer.CSharp.9.8.0.76515\analyzers\SonarAnalyzer.CFG.dll" />
+    <Analyzer Include="..\USSEnterprise.Presentation\packages\SonarAnalyzer.CSharp.9.8.0.76515\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\USSEnterprise.Presentation\packages\SonarAnalyzer.CSharp.9.8.0.76515\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
