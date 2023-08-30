@@ -10,6 +10,7 @@ namespace USSEnterprise.Presentation
     {
         static void Main(string[] args)
         {
+            //Find an effect infinit loop
         }
     }
 }
