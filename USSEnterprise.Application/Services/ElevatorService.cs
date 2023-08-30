@@ -11,15 +11,14 @@ namespace USSEnterprise.Application.Services
 {
     public class ElevatorService : IElevatorService
     {
-        private readonly Elevator _elevator;
-        private bool[] floorRequests;
+        
+        private readonly bool [] floorRequests;
         public int CurrentFloor { get; private set; } = 0;
         private readonly int topFloor;
         public ElevatorStatus Status { get; private set; } = ElevatorStatus.STOPPED;
 
         public ElevatorService(Elevator elevator, int numberOfFloors = 10)
         {
-            this._elevator = elevator;
             floorRequests = new bool[numberOfFloors + 1];
             topFloor = numberOfFloors;
         }
@@ -99,19 +98,21 @@ namespace USSEnterprise.Application.Services
         private void MoveToFloor(int targetFloor)
         {
             Status = CurrentFloor < targetFloor ? ElevatorStatus.UP : ElevatorStatus.DOWN;
+    
+            Console.WriteLine($"Closing Door...");
 
             while (CurrentFloor != targetFloor)
             {
                 if (Status == ElevatorStatus.UP)
                 {
                     CurrentFloor++;
+                    Console.WriteLine($"Moving UP... Currently at floor {CurrentFloor}");
                 }
                 else if (Status == ElevatorStatus.DOWN)
                 {
                     CurrentFloor--;
+                    Console.WriteLine($"Moving Down... Currently at floor {CurrentFloor}");
                 }
-
-                Console.WriteLine($"Moving... Currently at floor {CurrentFloor}");
             }
 
             Stop(CurrentFloor);

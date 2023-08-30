@@ -45,12 +45,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ElevatorService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\USSEnterprise.Domain\USSEnterprise.Domain.csproj">
       <Project>{F31CA2E1-0FD1-4ECE-A19B-273C5B86AA5D}</Project>
       <Name>USSEnterprise.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\USSEnterprise.Presentation\packages\SonarAnalyzer.CSharp.9.8.0.76515\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\USSEnterprise.Presentation\packages\SonarAnalyzer.CSharp.9.8.0.76515\analyzers\SonarAnalyzer.CFG.dll" />
+    <Analyzer Include="..\USSEnterprise.Presentation\packages\SonarAnalyzer.CSharp.9.8.0.76515\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\USSEnterprise.Presentation\packages\SonarAnalyzer.CSharp.9.8.0.76515\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
