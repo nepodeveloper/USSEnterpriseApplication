@@ -26,13 +26,13 @@ jobs:
         dotnet-version: 6.0.x
         
     - name: Restore dependencies
-      run: dotnet restore ./USSEnterpriseApplication.sln
+      run: dotnet restore ./USSEnterprise.Presentation.sln
       
     - name: Build
-      run: dotnet build ./USSEnterpriseApplication.sln --configuration Release --no-restore
+      run: dotnet build ./USSEnterprise.Presentation.sln --configuration Release --no-restore
       
     - name: Test
-      run: dotnet test ./USSEnterpriseApplication.sln --configuration Release --no-restore --verbosity normal
+      run: dotnet test ./USSEnterprise.Presentation.sln --configuration Release --no-restore --verbosity normal
 
     - name: Publish
-      run: dotnet publish ./USSEnterpriseApplication.sln --configuration Release --no-build
+      run: dotnet publish ./USSEnterprise.Presentation.sln --configuration Release --no-build
