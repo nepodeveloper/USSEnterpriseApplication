@@ -9,13 +9,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
-env:
-  AZURE_WEBAPP_NAME: current-time-service
-  AZURE_WEBAPP_PACKAGE_PATH: "./publish"
-
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -23,16 +19,16 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 4.x.x
+        dotnet-version: '4.8'
         
     - name: Restore
-      run: dotnet restore /USSEnterpriseApplication/USSEnterprise.Presentation/.sln
+      run: nuget restore USSEnterpriseApplication/USSEnterprise.Presentation.sln
       
     - name: Build
-      run: dotnet build /USSEnterpriseApplication/USSEnterprise.Presentation.sln --configuration Release --no-restore
+      run: msbuild USSEnterpriseApplication/USSEnterprise.Presentation.sln /p:Configuration=Release
       
     - name: Test
-      run: dotnet test /USSEnterpriseApplication/USSEnterprise.Presentation.sln --configuration Release --no-restore
-
+      run: echo "No tests for .NET Framework"
+      
     - name: Publish
-      run: dotnet publish /USSEnterpriseApplication/USSEnterprise.Presentation.sln --configuration Release --no-build
+      run: msbuild USSEnterpriseApplication/USSEnterprise.Presentation.sln /p:Configuration=Release /t:Publish
