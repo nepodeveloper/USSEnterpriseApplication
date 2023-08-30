@@ -23,7 +23,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 4.x.x
         
     - name: Restore
       run: dotnet restore /USSEnterpriseApplication/USSEnterprise.Presentation/.sln
@@ -32,7 +32,7 @@ jobs:
       run: dotnet build /USSEnterpriseApplication/USSEnterprise.Presentation.sln --configuration Release --no-restore
       
     - name: Test
-      run: dotnet test /USSEnterpriseApplication/USSEnterprise.Presentation.sln --configuration Release --no-restore --verbosity normal
+      run: dotnet test /USSEnterpriseApplication/USSEnterprise.Presentation.sln --configuration Release --no-restore
 
     - name: Publish
       run: dotnet publish /USSEnterpriseApplication/USSEnterprise.Presentation.sln --configuration Release --no-build
