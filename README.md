@@ -11,8 +11,8 @@ These instructions will help you set up and run the Elevator on your local machi
 
 # Installing
 1.	Clone the repository to your local machine:
-bashCopy code
-git clone https://github.com/your-username/elevator-simulator.git 
+bash Copy code
+git clone [https://github.com/your-username/elevator-simulator.git](https://github.com/nepodeveloper/USSEnterpriseApplication.git) 
 2.	Open the solution file USSEnterpriseApplication.sln in Visual Studio or your preferred code editor.
 3.	Build the solution to restore dependencies:
 Copy code
