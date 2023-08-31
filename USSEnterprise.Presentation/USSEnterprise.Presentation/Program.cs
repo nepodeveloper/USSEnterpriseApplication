@@ -15,54 +15,57 @@ namespace USSEnterprise.Presentation
         private const string QUIT = "q";
         static async Task Main(string[] args)
         {
-            List<Task> elevatorTasks = new List<Task>();
+            // Create and configure the service provider
+            IServiceProvider serviceProvider = ConfigureServices();
 
             Console.Write("How many elevator does the USS Enterprise have? ");
-            int turbolifts = int.Parse(Console.ReadLine());
+            int numberOfElevators = int.Parse(Console.ReadLine());
 
-            for (int i = 1; i <= turbolifts; i++)
+            List<Task> elevatorsAvailable = new List<Task>();
+
+            for (int i = 1; i <= numberOfElevators; i++)
             {
-                elevatorTasks.Add(SimulateElevator(i));
+                elevatorsAvailable.Add(SimulateElevator(i, serviceProvider));
             }
 
-            await Task.WhenAll(elevatorTasks);
+            await Task.WhenAll(elevatorsAvailable);
 
             Console.WriteLine("All elevators have completed their tasks. Exiting...");
 
-
         }
 
-        static Task SimulateElevator(int elevatorId)
+        static async Task SimulateElevator(int elevatorId, IServiceProvider serviceProvider)
         {
-            var serviceProvider = ConfigureServices();
+            await Task.Delay(3000);
 
-            var elevatorService = serviceProvider.GetService<IElevatorService>();      
+            await Task.Run(() =>
+            {           
+                IElevatorService elevator = serviceProvider.GetService<IElevatorService>();
 
-            Console.WriteLine($"Elevator {elevatorId} is ready.");
+                Console.Write($"Elevator {elevatorId} is ready.");
 
-            while (true)
-            {
-                Console.Write($"Elevator {elevatorId}: Please enter a floor number or 'q' to quit:");
-                string input = Console.ReadLine();
-
-                if (input == QUIT)
+                while (true)
                 {
-                    Console.Write($"Elevator {elevatorId}: Goodbye!");
-                    break;
+                    Console.Write($"Elevator {elevatorId}: Please enter a floor number or 'q' to quit:");
 
-                }
+                    string input = Console.ReadLine();
 
-                if (int.TryParse(input, out int floor))
-                {
-                    elevatorService.RequestFloor(floor);
-                }
-                else
-                {
-                    Console.Write($"Elevator {elevatorId}: Invalid input. Please enter a valid floor number.");
-                }
-            }
+                    if (input == QUIT)
+                    {
+                        Console.Write($"Elevator {elevatorId}: Goodbye!");
+                        break;
+                    }
 
-            return Task.CompletedTask;
+                    if (int.TryParse(input, out int floor))
+                    {
+                        elevator.RequestFloor(floor);
+                    }
+                    else
+                    {
+                        Console.Write($"Elevator {elevatorId}: Invalid input. Please enter a valid floor number.");
+                    }
+                }
+            });  
         }
 
         private static IServiceProvider ConfigureServices()

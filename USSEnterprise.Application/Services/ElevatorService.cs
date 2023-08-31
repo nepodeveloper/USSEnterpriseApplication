@@ -27,7 +27,7 @@ namespace USSEnterprise.Application.Services
         {
             if (floor < 1 || floor > topFloor)
             {
-                Console.WriteLine($"Invalid floor request. Please select a floor between 1 and {topFloor}.");
+                Console.Write($"Invalid floor request. Please select a floor between 1 and {topFloor}.");
                 return;
             }
             floorRequests[floor] = true;
@@ -53,24 +53,8 @@ namespace USSEnterprise.Application.Services
                 }
                 else
                 {
-                    Console.WriteLine("Elevator is idle. Waiting for requests...");
+                    Console.Write("Elevator is idle. Waiting for requests...");
                 }
-            }
-            else if (Status == ElevatorStatus.MOVING)
-            {
-               //ADD Code
-            }
-            else if (Status == ElevatorStatus.SERVICE)
-            {
-                //ADD Code
-            }
-            else if (Status == ElevatorStatus.JAMMED)
-            {
-                //ADD Code
-            }
-            else if (Status == ElevatorStatus.OVERWEIGHT)
-            {
-                //ADD Code
             }
         }
 
@@ -99,19 +83,19 @@ namespace USSEnterprise.Application.Services
         {
             Status = CurrentFloor < targetFloor ? ElevatorStatus.UP : ElevatorStatus.DOWN;
     
-            Console.WriteLine($"Closing Door...");
+            Console.Write($"Closing Door...");
 
             while (CurrentFloor != targetFloor)
             {
                 if (Status == ElevatorStatus.UP)
                 {
                     CurrentFloor++;
-                    Console.WriteLine($"Moving UP... Currently at floor {CurrentFloor}");
+                    Console.Write($"Moving UP... Currently at floor {CurrentFloor}");
                 }
                 else if (Status == ElevatorStatus.DOWN)
                 {
                     CurrentFloor--;
-                    Console.WriteLine($"Moving Down... Currently at floor {CurrentFloor}");
+                    Console.Write($"Moving Down... Currently at floor {CurrentFloor}");
                 }
             }
 
