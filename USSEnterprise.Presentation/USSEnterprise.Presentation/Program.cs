@@ -19,7 +19,7 @@ namespace USSEnterprise.Presentation
             IServiceProvider serviceProvider = ConfigureServices();
 
             Console.Write("How many elevator does the USS Enterprise have? ");
-            int numberOfElevators = int.Parse(Console.ReadLine());
+            long numberOfElevators = long.Parse(Console.ReadLine());
 
             List<Task> elevatorsAvailable = new List<Task>();
 
@@ -42,11 +42,11 @@ namespace USSEnterprise.Presentation
             {           
                 IElevatorService elevator = serviceProvider.GetService<IElevatorService>();
 
-                Console.Write($"Elevator {elevatorId} is ready.");
+                Console.WriteLine($"Elevator {elevatorId} is ready.");
 
                 while (true)
                 {
-                    Console.Write($"Elevator {elevatorId}: Please enter a floor number or 'q' to quit:");
+                    Console.WriteLine($"Elevator {elevatorId}: Please enter a floor number or 'q' to quit:");
 
                     string input = Console.ReadLine();
 
