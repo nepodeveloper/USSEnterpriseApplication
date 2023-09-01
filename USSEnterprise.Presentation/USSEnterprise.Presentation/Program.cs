@@ -10,7 +10,7 @@ using USSEnterpriseApplication.Infrastructure.Data.Repositories;
 
 namespace USSEnterprise.Presentation
 {
-    class Program
+   public class Program
     {
         private const string QUIT = "q";
         static async Task Main(string[] args)
@@ -34,7 +34,7 @@ namespace USSEnterprise.Presentation
 
         }
 
-        static async Task SimulateElevator(int elevatorId, IServiceProvider serviceProvider)
+       public static async Task SimulateElevator(int elevatorId, IServiceProvider serviceProvider)
         {
             await Task.Delay(3000);
 
