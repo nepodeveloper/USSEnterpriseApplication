@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "USSEnterprise.Domain", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "USSEnterpriseApplication.Infrastructure", "..\USSEnterpriseApplication.Infrastructure\USSEnterpriseApplication.Infrastructure.csproj", "{14D5751B-0FDE-41C3-A1C6-BC55D7FF1A49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "USSEnterpriseApplication.UnitTest", "..\USSEnterpriseApplication.UnitTest\USSEnterpriseApplication.UnitTest.csproj", "{7DE2953E-CDAB-4A80-AD72-97C3D56A55D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{14D5751B-0FDE-41C3-A1C6-BC55D7FF1A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14D5751B-0FDE-41C3-A1C6-BC55D7FF1A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14D5751B-0FDE-41C3-A1C6-BC55D7FF1A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DE2953E-CDAB-4A80-AD72-97C3D56A55D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DE2953E-CDAB-4A80-AD72-97C3D56A55D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DE2953E-CDAB-4A80-AD72-97C3D56A55D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DE2953E-CDAB-4A80-AD72-97C3D56A55D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
