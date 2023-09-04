@@ -1,10 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using USSEnterprise.Application.Interfaces;
 using USSEnterprise.Application.Services;
 using USSEnterprise.Domain.Entities;
@@ -15,88 +11,65 @@ using USSEnterpriseApplication.Infrastructure.Data.Repositories;
 namespace USSEnterpriseApplication.UnitTest.USSEnterprise.UnitTest.Presentation
 {
     [TestClass]
-    class PresentationUnitTest
+    public class PresentationUnitTest
     {
-       
+        IServiceProvider serviceProvider = ConfigureServices();
+        int elevatorId = 1;
+
         [TestMethod]
-        public async Task SimulateElevator_ShouldWaitFor3000Milliseconds()
+        public void SimulateElevator_ShouldWaitFor3000Milliseconds()
         {
-            // Arrange
-            var serviceProvider = ConfigureServices();
-            var elevatorId = 1;
 
             // Act
             var task = Program.SimulateElevator(elevatorId, serviceProvider);
 
             // Assert
-            await task;
-            Assert.IsTrue(task.IsCompleted);           
+            Assert.IsTrue(task.IsCompleted);
         }
 
         [TestMethod]
-        public async Task SimulateElevator_ShouldPrintElevatorIsReadyMessage()
+        public void SimulateElevator_ShouldPrintElevatorIsReadyMessage()
         {
-            // Arrange
-            var serviceProvider = ConfigureServices();
-            var elevatorId = 1;
-
             // Act
             var task = Program.SimulateElevator(elevatorId, serviceProvider);
 
             // Assert
-            await task;
             string output = Console.ReadLine();
             Assert.IsTrue(output.Contains($"Elevator {elevatorId} is ready."));
         }
 
         [TestMethod]
-        public async Task SimulateElevator_ShouldPromptForFloorNumber()
+        public void SimulateElevator_ShouldPromptForFloorNumber()
         {
-            // Arrange
-            var serviceProvider = ConfigureServices();
-            var elevatorId = 1;
-
             // Act
             var task = Program.SimulateElevator(elevatorId, serviceProvider);
 
             // Assert
-            await task;
             string output = Console.ReadLine();
             Assert.IsTrue(output.Contains($"Elevator {elevatorId}: Please enter a floor number or 'q' to quit:"));
         }
 
         [TestMethod]
-        public async Task SimulateElevator_ShouldRequestFloorWhenValidFloorNumberIsEntered()
+        public void SimulateElevator_ShouldRequestFloorWhenValidFloorNumberIsEntered()
         {
-            // Arrange
-            var serviceProvider = ConfigureServices();
-            var elevatorId = 1;
-
             // Act
             var task = Program.SimulateElevator(elevatorId, serviceProvider);
 
             // Assert
-            await task;
             string output = Console.ReadLine();
             Assert.IsTrue(output.Contains($"Elevator {elevatorId}: Requesting floor 1"));
         }
 
         [TestMethod]
-        public async Task SimulateElevator_ShouldPrintGoodbyeMessageWhenQuitIsEntered()
+        public void SimulateElevator_ShouldPrintGoodbyeMessageWhenQuitIsEntered()
         {
-            // Arrange
-            var serviceProvider = ConfigureServices();
-            var elevatorId = 1;
-
             // Act
-           
-            var task =  Program.SimulateElevator(elevatorId, serviceProvider);
+            var task = Program.SimulateElevator(elevatorId, serviceProvider);
 
             // Assert
-            await task;
             string output = Console.ReadLine();
             Assert.IsTrue(output.Contains($"Elevator {elevatorId}: Goodbye!"));
-        }       
+        }
 
         private static IServiceProvider ConfigureServices()
         {
