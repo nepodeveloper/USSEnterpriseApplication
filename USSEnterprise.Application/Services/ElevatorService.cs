@@ -13,12 +13,12 @@ namespace USSEnterprise.Application.Services
     {
         
         private bool [] floorRequests { get; set; }
-        public int currentFloor { get; private set; } = 0;
-        public int topFloor { get; private set; }
-        public int currentWeight { get; private set; } = 0;
-        public int averagePersonWeight { get; private set; } = 80;
-        public int maxWeightCapacity { get; private set; } = 1400;
-        public ElevatorStatus Status { get; private set; } = ElevatorStatus.STOPPED;
+        public int currentFloor { get; set; } = 0;
+        public int topFloor { get;  set; }
+        public int currentWeight { get;  set; } = 0;
+        public int averagePersonWeight { get;  set; } = 80;
+        public int maxWeightCapacity { get;  set; } = 1400;
+        public ElevatorStatus Status { get;  set; } = ElevatorStatus.STOPPED;
 
         public ElevatorService(Elevator elevator, int numberOfFloors = 10)
         {
@@ -36,7 +36,7 @@ namespace USSEnterprise.Application.Services
             floorRequests[floor] = true;
             ProcessRequests();
         }
-        private void Stop(int floor)
+        public void Stop(int floor)
         {
             Status = ElevatorStatus.STOPPED;
             currentFloor = floor;
@@ -44,7 +44,7 @@ namespace USSEnterprise.Application.Services
             Console.WriteLine($"Stopped at floor {floor}");
         }
 
-        private void ProcessRequests()
+        public void ProcessRequests()
         {
             currentWeight = EnterPassengers();
             if (currentWeight > maxWeightCapacity)
@@ -79,7 +79,7 @@ namespace USSEnterprise.Application.Services
             }
         }
 
-        private int FindNextRequestedFloor()
+        public int FindNextRequestedFloor()
         {
             for (int i = currentFloor; i <= topFloor; i++)
             {
@@ -100,7 +100,7 @@ namespace USSEnterprise.Application.Services
             return -1;
         }
 
-        private void MoveToFloor(int targetFloor)
+        public void MoveToFloor(int targetFloor)
         {
             Status = currentFloor < targetFloor ? ElevatorStatus.UP : ElevatorStatus.DOWN;
     
